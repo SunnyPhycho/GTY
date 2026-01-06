@@ -71,7 +71,7 @@ class handler(BaseHTTPRequestHandler):
             draw.text((base_x+width-name_w, base_y-30), char_name, font=font_ui, fill="#DC143C")
             
             # 바 그리기
-            bar_h = 25
+            bar_h = 40
             draw.rectangle([(base_x, base_y), (base_x+width, base_y+bar_h)], outline="white", width=2)
             
             # 슬라이더
@@ -91,8 +91,8 @@ class handler(BaseHTTPRequestHandler):
             # (A) LUST
             aff_r = max(0, min(100, aff)) / 100.0
             draw.text((base_x, sub_y), f"LUST {aff}%", font=font_ui, fill="#FF69B4")
-            draw.rectangle([(base_x, sub_y+25), (base_x+sub_w, sub_y+40)], fill="#333333", outline="#555555")
-            draw.rectangle([(base_x, sub_y+25), (base_x+(sub_w*aff_r), sub_y+40)], fill="#FF1493")
+            draw.rectangle([(base_x, sub_y+25), (base_x+sub_w, sub_y+49)], fill="#333333", outline="#555555")
+            draw.rectangle([(base_x, sub_y+25), (base_x+(sub_w*aff_r), sub_y+49)], fill="#FF1493")
             
             # (B) LINK
             rel_r = max(0, min(100, rel)) / 100.0
@@ -104,7 +104,7 @@ class handler(BaseHTTPRequestHandler):
             
             draw.rectangle([(rx, sub_y+25), (base_x+width, sub_y+40)], fill="#333333", outline="#555555")
             fill_start = (base_x + width) - (sub_w * rel_r)
-            draw.rectangle([(fill_start, sub_y+25), (base_x+width, sub_y+40)], fill="#FFD700")
+            draw.rectangle([(fill_start, sub_y+25), (base_x+width, sub_y+49)], fill="#FFD700")
 
         # 실행
         if stats_input and ':' in stats_input:
