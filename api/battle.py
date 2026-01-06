@@ -59,7 +59,7 @@ class handler(BaseHTTPRequestHandler):
         # ----------------------------------------------------
         def draw_hud(aff, rel, dom, char_name):
             base_x = 650
-            base_y = 450
+            base_y = 350
             width = 580
             
             # [1] 주도권 (Dominance)
