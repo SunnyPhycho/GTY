@@ -116,12 +116,26 @@ class handler(BaseHTTPRequestHandler):
             except: pass
 
         # ----------------------------------------------------
-        # 대사창 (하단)
+        # 대사창 (하단) - 반투명 처리
         # ----------------------------------------------------
         box_h = 250
-        draw.rectangle([(0, 768-box_h), (1280, 768)], fill="#000000")
+        
+        # 1. 반투명 레이어 생성 (RGBA 모드)
+        overlay = Image.new('RGBA', img.size, (0, 0, 0, 0))
+        overlay_draw = ImageDraw.Draw(overlay)
+        
+        # 2. 반투명 검정 박스 그리기
+        # (0, 0, 0, 200) -> 마지막 숫자가 투명도 (0~255). 200이면 약 80% 불투명.
+        overlay_draw.rectangle([(0, 768-box_h), (1280, 768)], fill=(0, 0, 0, 200))
+        
+        # 3. 원본 이미지와 합성
+        img = Image.alpha_composite(img.convert('RGBA'), overlay)
+        draw = ImageDraw.Draw(img) # 합성된 이미지에 다시 그리기 도구 연결
+
+        # 4. 상단 경계선 (선명하게 보이도록 합성 후 그림)
         draw.line([(0, 768-box_h), (1280, 768-box_h)], fill="#444444", width=3)
         
+        # 5. 텍스트 출력
         text_y = 768 - box_h + 50
         lines = textwrap.wrap(text_input, width=40)
         for line in lines:
