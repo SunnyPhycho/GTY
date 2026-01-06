@@ -6,7 +6,7 @@ import os
 import textwrap
 
 ASSETS = {
-    '김레드': {'file': 'R.PNG'}
+    '김레드': {'file': 'R.PNG'},
     'default': {'file': 'bg_battle.png', 'x': 1280, 'y': 768, 'color': 'white'}
 }
 
