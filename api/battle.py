@@ -18,8 +18,7 @@ class handler(BaseHTTPRequestHandler):
         text_input = query_params.get('text', [''])[0].replace('_', ' ')
         stats_input = query_params.get('stats', ['0:0:0'])[0]
 
-        img = Image.new('RGB', (1280, 768), color='#0F0F15')
-        draw = ImageDraw.Draw(img)
+        
 
         try:
             font_main = ImageFont.truetype("font.ttf", 48)
