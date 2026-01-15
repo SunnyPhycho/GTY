@@ -137,7 +137,7 @@ class handler(BaseHTTPRequestHandler):
         
         # 5. 텍스트 출력
         text_y = 768 - box_h + 50
-        lines = textwrap.wrap(text_input, width=40)
+        lines = textwrap.wrap(text_input, width=38)
         for line in lines:
             draw.text((62, text_y+2), line, font=font_main, fill="#222222") 
             draw.text((60, text_y), line, font=font_main, fill="white")
